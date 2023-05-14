@@ -4,7 +4,7 @@
 
     $executionStartTime = microtime(true);
 
-    $url = ...;
+    $url='http://api.geonames.org/oceanJSON?formatted=true&lat=' . $_REQUEST['lat'] . '&lng=' . $_REQUEST['lng'] . '&username=demo&style=full';
 
     $ch = curl_init();
 
@@ -29,5 +29,5 @@
 	header('Content-Type: application/json; charset=UTF-8');
 
 
-    echo json_encode($decode);
+    echo json_encode($output);
 ?>
