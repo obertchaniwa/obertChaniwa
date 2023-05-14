@@ -4,7 +4,7 @@
 
     $executionStartTime = microtime(true);
 
-    $url = ...;
+    $url='http://api.geonames.org/neighboursJSON?formatted=true&country=' . $_REQUEST['country'] . '&username=obertgeo&style=full';
 
     $ch = curl_init();
 
@@ -29,5 +29,5 @@
 	header('Content-Type: application/json; charset=UTF-8');
 
 
-    echo json_encode($decode);
+    echo json_encode($output);
 ?>
