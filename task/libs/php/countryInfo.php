@@ -1,31 +1,33 @@
 <?php
-    // These two set of lines initiate comprehensive error reporting, so that I can run the routine directly in the browser and see all output, including errors, echoed to the browser screen. To do this, enter the full path of the file as it appears on the web server, file name and extension and then a question mark followed by the parameters, each one separated by an ampersand. 
     ini_set('display_errors', 'On');
     error_reporting(E_ALL);
 
+    $executionStartTime = microtime(true);
+    
     // API source url with predefined parameters 
-    $url = "...";
+    $url='http://api.geonames.org/countryInfoJSON?formatted=true&lang=' . $_REQUEST['lang'] . '&country=' . $_REQUEST['country'] . '&username=obertgeo&style=full';
 
-    // Initialize Curl 
     $ch = curl_init();
 
-    // FALSE to stop cURL from verifying the peer's certificate.
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
 
-    // TRUE to return the transfer as a string of the return value of curl_exec//() instead of outputting it directly.
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-    // The URL to fetch. This can also be set when initializing a session with curl_init().
     curl_setopt($ch, CURLOPT_URL, $url);
 
-    //Execute the cURL object and stores the result to $result.
     $result = curl_exec($ch);
-    //print_r($result);
-
-    // Closes the session.
+ 
     curl_close($ch);
 
-    // Convert JSON string into an object. 
     $decode = json_decode($result, true);
-    echo json_encode($decode);
+
+	$output['status']['code'] = "200";
+	$output['status']['name'] = "ok";
+	$output['status']['description'] = "success";
+	$output['status']['returnedIn'] = intval((microtime(true) - $executionStartTime) * 1000) . " ms";
+	$output['data'] = $decode['geonames'];
+	
+	header('Content-Type: application/json; charset=UTF-8');
+
+    echo json_encode($output);
 ?>
