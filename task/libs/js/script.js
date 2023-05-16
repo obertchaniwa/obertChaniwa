@@ -1,76 +1,80 @@
-//countryInfo:
-$('#btn1').click(function() {
 
+$('#btnRun1').click(function() {
+	
     $.ajax({
-        url: "libs/php/countryInfo.php",
+        url: "libs/php/earthquakes.php",
         type: 'POST',
         dataType: 'json',
         data: {
-            country: $('#selCountry').val(),
-            lang: $('#selLanguage').val()
+            north: $('#north').val(),
+            south: $('#south').val(),
+            east: $('#east').val(),
+            west: $('#west').val(),
         },
+        
         success: function(result) {
 
             console.log(JSON.stringify(result));
 
             if (result.status.name == "ok") {
 
-                $('#txtContinent').html(result['data'][0]['continent']);
-                $('#txtCapital').html(result['data'][0]['capital']);
-                $('#txtLanguages').html(result['data'][0]['languages']);
-                $('#txtPopulation').html(result['data'][0]['population']);
-                $('#txtArea').html(result['data'][0]['areaInSqKm']);
+                $('#txtNorth').html(result['data'][0]['north']);
+                $('txtSouth').html(result['data'][0]['south']);
+                $('#txtEast').html(result['data'][0]['east']);
+                $('#txtWest').html(result['data'][0]['west']);
             }
+                console.log(data)
+                $('#quakes').html(data);
         
         },
         error: function(jqXHR, textStatus, errorThrown) {
+            // your error code
         }
     }); 
 
 });
 
-
-//oceans
-$('#btn2').click(function() {
+$('#btnRun2').click(function() {
 
     $.ajax({
-        url: "libs/php/ocean.php",
+        url: "libs/php/oceans.php",
         type: 'POST',
         dataType: 'json',
         data: {
             lat: $('#lat').val(),
             lng: $('#lng').val(),
         },
+        
         success: function(result) {
 
             console.log(JSON.stringify(result));
 
             if (result.status.name == "ok") {
 
-                $('#txtName').html(result['data'][0]['name']);
-                $('#txtDistance').html(result['data'][0]['distance']);
+                $('#txtLat').html(result['data'][0]['lat']);
+                $('#txtLng').html(result['data'][0]['lng']);
             }
+        
+            $('#oceans').html(data);	
         
         },
         error: function(jqXHR, textStatus, errorThrown) {
         }
     }); 
-
+        
 });
 
-
-
-//neighbours
-$('#btn3').click(function() {
+$('#btnRun3').click(function() {
 
     $.ajax({
-        url: "libs/php/neighbours.php",
+        url: "libs/php/weather.php",
         type: 'POST',
         dataType: 'json',
         data: {
-            endpoint: "neighbours",
-            country: $("#country").val(),
-
+            north: $('#north1').val(),
+            south: $('#south1').val(),
+            east: $('#east1').val(),
+            west: $('#west1').val(),
         },
         success: function(result) {
 
@@ -78,12 +82,17 @@ $('#btn3').click(function() {
 
             if (result.status.name == "ok") {
 
-                $('#txtCountry').html(result['data'][0]['country'])
+                $('#txtNorth1').html(result['data'][0]['north1']);
+                $('txtSouth1').html(result['data'][0]['south1']);
+                $('#txtEast1').html(result['data'][0]['east1']);
+                $('#txtWest1').html(result['data'][0]['west1']);
             }
+        
+            $('#weather').html(data);	
         
         },
         error: function(jqXHR, textStatus, errorThrown) {
         }
     }); 
-
+        
 });
