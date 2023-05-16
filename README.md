@@ -15,7 +15,9 @@
 
 
 ## Prerequisites
+Before you begin, ensure you have met the following requirements:
 
+Git must be installed on your operating system.
 
 ## Installation
 
