@@ -5,7 +5,7 @@
     $executionStartTime = microtime(true);
     
     // API source url with predefined parameters 
-    $url='http://api.geonames.org/countryInfoJSON?formatted=true&lang=' . $_REQUEST['lang'] . '&country=' . $_REQUEST['country'] . '&username=obertgeo&style=full';
+    $url='http://api.geonames.org/earthquakesJSON?formatted=true&north=' . $_REQUEST['north'] . $_REQUEST['south'] . $_REQUEST['east'] . $_REQUEST['west'].'&username=obertgeo&style=full';
 
     $ch = curl_init();
 
