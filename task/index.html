@@ -33,36 +33,29 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <td>CountryInfo</td>
-                      <td>
-                        <div class="countryInfo">
-                          <div class="countryInfoparam1">
-
-                            <label for="country"> Country</label>
-                            <select id="country" placeholder="Country">
-                              <option value="GB">Great Britain</option>
-                              <option value="ES">Spain</option>
-                              <option value="IT">Italy</option>
-                              <option value="US">USA</option>
-                            </select>
-                          </div>
-
-                          <div class="countryInfoparam2">
-                            
-                            <label for="country"> Language</label>
-                            <select id="country">
-                              <option value="Eng">English</option>
-                              <option value="ESP">Spanish</option>
-                              <option value="ITA">Italian</option>
-                              <option value="US-ENG">English</option>
-                            </select>
-                          </div>
-                        </div>
-                      </td>
-
-
-                      <td><button class="btn" id="btn1">Submit</button></td>
-                    </tr>
+                        <tr>
+                          <td>Earthquakes</td>
+                          <td>
+                            <div class="row">
+                              <div class="col-md-3 px-1">
+                                <input type="number" id="north" class="form-control" placeholder="North" required>
+                              </div>
+                              <div class="col-md-3 px-1">
+                                <input type="number" id="south" class="form-control" placeholder="South" required>
+                              </div>
+                              <div class="col-md-3 px-1">
+                                <input type="number" id="east" class="form-control" placeholder="East" required>
+                              </div>
+                              <div class="col-md-3 px-1">
+                                <input type="number" id="west" class="form-control" placeholder="West" required>
+                              </div>
+                            </div>
+                          </td>
+                          <td>
+                            <button class="btn btn-primary" id="btnRun1">Submit</button>
+                          </td>
+                        </tr>
+                        <tr>
                     <tr>
                       <td>Oceans</td>
                       <td>
@@ -76,22 +69,30 @@
 			</div>
                         
                       </td>
-                      <td><button class="btn" id="btn2">Submit</button></td>
+                      <td><button class="btn" id="btnRun2">Submit</button></td>
                     </tr>
-                    <tr>
-                      <td>Neighbours</td>
-                      <td>
-                        <label for="country"> Selected Country</label>
-                        <select id="country">
-                          <option value="GB">Great Britain</option>
-                          <option value="ES">Spain</option>
-                          <option value="IT">Italy</option>
-                          <option value="US">USA</option>
-                        </select>
-                      
-                      </td>
-                      <td><button class="btn" id="btn3">Submit</button></td>
-                    </tr>
+		    <tr>
+			<td>Weather</td>
+			<td>
+			<div class="row">
+				<div class="col-md-3 px-1">
+					<input type="number" id="north1" class="form-control" placeholder="North" required>
+				</div>
+				<div class="col-md-3 px-1">
+					<input type="number" id="south1" class="form-control" placeholder="South" required>
+				</div>
+				<div class="col-md-3 px-1">
+					<input type="number" id="east1" class="form-control" placeholder="East" required>
+				</div>
+				<div class="col-md-3 px-1">
+					<input type="number" id="west1" class="form-control" placeholder="West" required>
+				</div>
+			</div>
+				</td>
+				<td>
+					<button class="btn btn-primary" id="btnRun3">Submit</button>
+				</td>
+		   </tr>
             
                     <!--Answers--START-->
 
@@ -104,17 +105,17 @@
 
                           <div class="col-12 alert alert-info mb-4" id="earthquake">
                             <h5 class="text-center"></h5>
-                            <div class="row" id="api1"></div>
+                            <div class="row" id="quakes"></div>
                           </div>
 
                           <div class="col-12 alert alert-info mb-4" id="earthquake">
                             <h5 class="text-center"></h5>
-                            <div class="row" id="api2"></div>
+                            <div class="row" id="oceans"></div>
                           </div>
 
                           <div class="col-12 alert alert-info mb-4" id="earthquake">
                             <h5 class="text-center"></h5>
-                            <div class="row" id="api1"></div>
+                            <div class="row" id="weather"></div>
                           </div>
 
                         </div>
