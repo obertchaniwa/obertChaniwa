@@ -4,15 +4,15 @@
 
     $executionStartTime = microtime(true);
 
-    $url='http://api.geonames.org/weatherJSON?formatted=true&north=' . $_REQUEST['north'] . $_REQUEST['south'] . $_REQUEST['east'] . $_REQUEST['west'].'&username=obertgeo&style=full';
+    $url='http://api.geonames.org/weatherJSON?formatted=true&north=' . $_REQUEST['north'] . '&south=' . $_REQUEST['south'] . '&east='. $_REQUEST['east'] . '&west=' . $_REQUEST['west'] . '&username=obertgeo&style=full';
 
     $ch = curl_init();
 
-    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER,false);
 
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
 
-    curl_setopt($ch, CURLOPT_URL, $url);
+    curl_setopt($ch, CURLOPT_URL,$url);
 
     $result = curl_exec($ch);
 
@@ -24,7 +24,7 @@
 	$output['status']['name'] = "ok";
 	$output['status']['description'] = "success";
 	$output['status']['returnedIn'] = intval((microtime(true) - $executionStartTime) * 1000) . " ms";
-	$output['data'] = $decode['geonames'];
+	$output['data'] = $decode['weather'];
 	
 	header('Content-Type: application/json; charset=UTF-8');
 
