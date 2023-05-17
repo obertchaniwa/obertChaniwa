@@ -18,17 +18,12 @@ $('#btnRun1').click(function() {
 
             if (result.status.name == "ok") {
 
-                $('#txtNorth').html(result['data'][0]['north']);
-                $('txtSouth').html(result['data'][0]['south']);
-                $('#txtEast').html(result['data'][0]['east']);
-                $('#txtWest').html(result['data'][0]['west']);
+                $('#quakes').html(result.data[0].magnitude);
             }
-                console.log(data)
-                $('#quakes').html(data);
-        
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // your error code
+            console.log(jqXHR);
         }
     }); 
 
@@ -37,7 +32,7 @@ $('#btnRun1').click(function() {
 $('#btnRun2').click(function() {
 
     $.ajax({
-        url: "libs/php/oceans.php",
+        url: "libs/php/ocean.php",
         type: 'POST',
         dataType: 'json',
         data: {
@@ -50,19 +45,16 @@ $('#btnRun2').click(function() {
             console.log(JSON.stringify(result));
 
             if (result.status.name == "ok") {
-
-                $('#txtLat').html(result['data'][0]['lat']);
-                $('#txtLng').html(result['data'][0]['lng']);
+                $('#oceanData').html(result.data); 
             }
-        
-            $('#oceans').html(data);	
-        
         },
         error: function(jqXHR, textStatus, errorThrown) {
+            // Handle error
+            console.log(jqXHR);
         }
     }); 
-        
 });
+
 
 $('#btnRun3').click(function() {
 
@@ -82,16 +74,12 @@ $('#btnRun3').click(function() {
 
             if (result.status.name == "ok") {
 
-                $('#txtNorth1').html(result['data'][0]['north1']);
-                $('txtSouth1').html(result['data'][0]['south1']);
-                $('#txtEast1').html(result['data'][0]['east1']);
-                $('#txtWest1').html(result['data'][0]['west1']);
+                $('#weatherData').html(result.data[0].magnitude);
             }
-        
-            $('#weather').html(data);	
-        
         },
         error: function(jqXHR, textStatus, errorThrown) {
+            //your error code
+            console.log(jqXHR);
         }
     }); 
         
