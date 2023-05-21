@@ -45,7 +45,7 @@ $('#btnRun2').click(function() {
             console.log(JSON.stringify(result));
 
             if (result.status.name == "ok") {
-                $('#oceanData').html(result.data); 
+                $('#oceanData').html(JSON.stringify(result.data)); 
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
