@@ -45,7 +45,16 @@ $('#btnRun2').click(function() {
             console.log(JSON.stringify(result));
 
             if (result.status.name == "ok") {
-                $('#oceanData').html(JSON.stringify(result.data)); 
+                var oceanData = result.data;
+                
+                // Access the properties of the oceanData object and display them using DOM elements
+                var oceanName = oceanData.name;
+                var oceanArea = oceanData.area;
+                var oceanDepth = oceanData.depth;
+
+                $('#oceanName').text(oceanName);
+                $('#oceanArea').text(oceanArea);
+                $('#oceanDepth').text(oceanDepth);
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -73,8 +82,18 @@ $('#btnRun3').click(function() {
             console.log(JSON.stringify(result));
 
             if (result.status.name == "ok") {
+                var weatherData = result.data;
+                
+                // Access the properties of the weatherData object and display them using DOM elements
+                var magnitude = weatherData[0].magnitude;
+                var temperature = weatherData[0].temperature;
+                var humidity = weatherData[0].humidity;
+                var windSpeed = weatherData[0].windSpeed;
 
-                $('#weatherData').html(result.data[0].magnitude);
+                $('#magnitude').text(magnitude);
+                $('#temperature').text(temperature);
+                $('#humidity').text(humidity);
+                $('#windSpeed').text(windSpeed);
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
@@ -84,3 +103,5 @@ $('#btnRun3').click(function() {
     }); 
         
 });
+
+
